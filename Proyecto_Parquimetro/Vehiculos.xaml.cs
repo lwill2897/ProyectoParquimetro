@@ -134,7 +134,8 @@ namespace Proyecto_Parquimetro
                     sqlconnection.Open();
 
                     // Agregar el parámetro
-                    sqlCommand.Parameters.AddWithValue("@Num_Placa", lbVehiculosAparacados.SelectedItem);
+                    sqlCommand.Parameters.AddWithValue("@Num_Placa", lbVehiculosAparacados.SelectedValue);
+                    
                     
                     // Ejecutar un query scalar
                     sqlCommand.ExecuteScalar();
@@ -214,7 +215,11 @@ namespace Proyecto_Parquimetro
             dispatcher.Start();
         }
 
+        private void Btnreloj_Click(object sender, RoutedEventArgs e)
+        {
+            txthora.IsEnabled = true;
 
+        }
     }
 }
 

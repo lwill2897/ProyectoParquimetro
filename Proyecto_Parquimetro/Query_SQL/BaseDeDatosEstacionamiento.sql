@@ -31,6 +31,15 @@ CREATE TABLE Parqueo.Vehiculo
 )
 GO
 
+CREATE TABLE Parqueo.Registro
+(
+	Num_Placa NVARCHAR(7) NOT NULL CONSTRAINT PK_Vehiculo_Num_Placa_Registro PRIMARY KEY CLUSTERED,
+	IdTipo_Vehiculo INT NOT NULL,
+	Hora_Ingreso TIME NOT NULL,
+	Hora_Salida TIME DEFAULT GETDATE() NOT NULL
+)
+GO
+
 CREATE TABLE Parqueo.Tipo_Vehiculo
 (
 	Id INT IDENTITY (1,1) NOT NULL
@@ -57,6 +66,16 @@ ALTER TABLE Parqueo.Vehiculo
 		ON DELETE NO ACTION
 GO
 
+ALTER TABLE Parqueo.Registro
+	ADD CONSTRAINT
+		FK_Registro_Parqueo_Vehiculo$TieneUn$Parqueo_Tipo_id					
+		FOREIGN KEY (IdTipo_Vehiculo) REFERENCES Parqueo.Tipo_Vehiculo(Id)
+		ON UPDATE CASCADE
+		ON DELETE NO ACTION
+GO
+
+
+/*
 INSERT INTO Parqueo.Tipo_Vehiculo(Tipo)
 VALUES  ('Liviana'),
 		('Pesada'),
@@ -74,10 +93,6 @@ GO
 
 SELECT * FROM Parqueo.Vehiculo
 GO
-/*UPDATE Parqueo.Tipo_Vehiculo 
-Set Tipo = 'Especial'
-Where id = 3
-go*/
 
 INSERT INTO Parqueo.Cobro (Monto)
 VALUES (30.50),
@@ -88,3 +103,4 @@ GO
 SELECT * FROM Parqueo.Cobro
 GO
 
+DROP table Parqueo.Registro*/

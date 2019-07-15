@@ -117,6 +117,7 @@
     <None Include="EstacionamientoDataSet.xss">
       <DependentUpon>EstacionamientoDataSet.xsd</DependentUpon>
     </None>
+    <None Include="Manual\Manual Desarrollo.pdf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

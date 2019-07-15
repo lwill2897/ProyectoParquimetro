@@ -32,7 +32,7 @@
             <Button  Background="#80cbc4" BorderBrush="#4f9a94" Height="50" Width="318" FontFamily="Robotol" FontSize="23"   Content="Vehiculo" Margin="89,20,0,20" x:Name="btn_Vehiculo" Click="Btn_vehiculo_Click" HorizontalAlignment="Left"/>
             <Button  Background="#80cbc4" BorderBrush="#4f9a94" Height="50" Width="318" FontFamily="Roboto" FontSize="23"  Content="Reporte" Margin="92,20,0,20" Name="btn_reporte" HorizontalAlignment="Left" />
             <Button  Background="#80cbc4" BorderBrush="#4f9a94" Height="50" Width="318" FontFamily="Roboto" FontSize="23"   Content="Manual" Margin="92,20,0,20" Name="btn_manual" HorizontalAlignment="Left"/>
-            <Button  Background="#80cbc4" BorderBrush="#4f9a94" Height="50"  Width="318" FontFamily="Roboto" FontSize="23"   Content="Extra" Margin="92,20,0,20" HorizontalAlignment="Left"  />
+            <Button  Background="#80cbc4" BorderBrush="#4f9a94" Height="50"  Width="318" FontFamily="Roboto" FontSize="23"   Content="Extra" Margin="92,20,0,20" HorizontalAlignment="Left"  Click="Button_Click"/>
 
         </StackPanel>
         <materialDesign:PackIcon Kind="CarDoor" Height="63" Width="41" HorizontalAlignment="Left" Margin="156,12,0,0" Grid.Row="1" Grid.Column="1" />

@@ -27,7 +27,7 @@
             <TextBox  ToolTip="Formato HND1234" Name="txtplaca" Background="White" Margin="76,40,54,0" materialDesign:HintAssist.Hint="Placa Vehiculo" FontSize="25" FontFamily="Roboto" materialDesign:HintAssist.IsFloating="True" Height="70" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
             <ComboBox  Name="cmbtipovehiculo" Background="White" Margin="76,40,54,0" Height="70" materialDesign:HintAssist.Hint="Tipo Vehículo" FontFamily="Roboto" FontSize="25" VerticalAlignment="Bottom"></ComboBox>
             <Button Background="#80cbc4" BorderBrush="#4f9a94" Height="60"  FontFamily="Roboto" FontSize="23" Content="Ingreso" Margin="76,40,54,0" x:Name="btn_entrada" VerticalAlignment="Center" Click="Btn_entrada_Click"/>
-            <TextBox  Name="txthora" Background="White" Margin="76,40,54,0" materialDesign:HintAssist.Hint="Hora Actual" FontSize="25" FontFamily="Roboto" materialDesign:HintAssist.IsFloating="True" Height="70" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            <TextBox  Name="txthora" Background="White" Margin="76,40,54,0" materialDesign:HintAssist.Hint="Hora Actual" FontSize="25" FontFamily="Roboto" materialDesign:HintAssist.IsFloating="True" Height="70" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsEnabled="False" />
         </StackPanel>
 
         <StackPanel Margin="402,2,5,0" Grid.Row="1" Grid.Column="1" Background="#afb42b" Grid.ColumnSpan="3" >
@@ -64,7 +64,7 @@
 
         <Label  FontFamily="Roboto" FontSize="30" FontWeight="Bold" Margin="444,408,335,79" Grid.Row="1" Content="Cobro" Grid.ColumnSpan="2" Grid.Column="1" />
         <ListBox Name="lbcobro" Grid.Row="1" Margin="442,454,30,12" Background="White" Grid.ColumnSpan="3" Grid.Column="1"/>
-        <Button Name="Btnreloj" Style="{DynamicResource MaterialDesignFloatingActionAccentButton }" Content="{materialDesign:PackIcon Kind=Clock, Size= 45 }" Foreground="#fbc02d"  Grid.Column="3" Margin="46,0,5,0" Height="Auto" Width="Auto" Background="Azure"/>
+        <Button Name="Btnreloj" Style="{DynamicResource MaterialDesignFloatingActionAccentButton }" Content="{materialDesign:PackIcon Kind=Clock, Size= 45 }" Foreground="#fbc02d"  Grid.Column="3" Margin="46,0,5,0" Height="Auto" Width="Auto" Background="Azure" Click="Btnreloj_Click"/>
         <materialDesign:PackIcon Kind="Import" materialDesign:ColorZoneAssist.Mode="Light" Height="75" Width="143" Margin="-34,251,0,0" Grid.Row="1" Grid.ColumnSpan="2"/>
         <Button Name="btnregresar" Style="{DynamicResource MaterialDesignFloatingActionLightButton }" Content="{materialDesign:PackIcon Kind=ArrowLeftBold, Size= 45 }" Foreground="Black" Margin="14,0,557,0" Height="Auto" Width="Auto" Background="#fbc02d" Grid.ColumnSpan="2" Click="Btnregresar_Click"/>
     </Grid>
