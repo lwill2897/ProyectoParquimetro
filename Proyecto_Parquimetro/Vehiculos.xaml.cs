@@ -11,11 +11,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Timers;
 
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
-
+using System.Windows.Threading;
 
 namespace Proyecto_Parquimetro
 {
@@ -34,34 +35,17 @@ namespace Proyecto_Parquimetro
             sqlconnection = new SqlConnection(connectionString);
             MostrarTipo();
             MostrarVehiculosEstacionados();
+            hora();
     
 
         }
         public class Estacionados
         {
-            private string numPlaca;
-            private int idTipoVehiculo;
- 
-
-   
-            public Estacionados()
-            {
-
-            }
-            public int IdTipoVehiculo
-            {
-                get { return idTipoVehiculo; }
-                set { idTipoVehiculo = value; }
-            }
-
-            public string NumPlaca
-            {
-                get { return numPlaca; }
-                set { numPlaca = value; }
-            }
-
-
+            public string NumPlaca { get; set; }
+            public string Tipo_Vehiculo { get; set; }
+            public string Hora_Ingreso { get; set; }
         }
+
 
         private void TextFieldAssist_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -117,7 +101,7 @@ namespace Proyecto_Parquimetro
 
                 
                 sqlCommand.Parameters.AddWithValue("@numero_placa", txtplaca.Text);
-                sqlCommand.Parameters.AddWithValue("@tipovehiculo", Convert.ToString(cmbtipovehiculo.SelectedValue));
+                sqlCommand.Parameters.AddWithValue("@tipovehiculo", cmbtipovehiculo.SelectedValue);
                 sqlCommand.ExecuteNonQuery();
            
             }
@@ -128,58 +112,54 @@ namespace Proyecto_Parquimetro
             finally
             {
                 sqlconnection.Close();
+                MostrarVehiculosEstacionados();
             }
         }
-                
+
         private void Btn_salida_Click(object sender, RoutedEventArgs e)
         {
             if (lbVehiculosAparacados.SelectedValue == null)
+            {
                 MessageBox.Show("Debe seleccionar un Vehiculo");
+            }
             else
             {
 
-            }
-
-        }
-
-        public DataTable MostrarEstacionados()
-        {
-            DataTable tablaEstacionados = new DataTable();
-            try
-            {
-
-                string query = "SELECT * from Parqueo.Vehiculo";
-
-                // Comando SQL
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlconnection);
-
-                using (sqlDataAdapter)
+                try
                 {
+                    String query = "Delete FROM Parqueo.Vehiculo WHERE Num_Placa = @Num_Placa";
+                    SqlCommand sqlCommand = new SqlCommand(query, sqlconnection);
 
-                    sqlDataAdapter.Fill(tablaEstacionados);
-                    lbVehiculosAparacados.DisplayMemberPath = "Num_Placa";
+                    // Abrir la conexión
+                    sqlconnection.Open();
 
-                    lbVehiculosAparacados.SelectedValuePath = " Num_Placa";
-                    lbVehiculosAparacados.ItemsSource = tablaEstacionados.DefaultView;
+                    // Agregar el parámetro
+                    sqlCommand.Parameters.AddWithValue("@Num_Placa", lbVehiculosAparacados.SelectedItem);
+                    
+                    // Ejecutar un query scalar
+                    sqlCommand.ExecuteScalar();
                 }
-
-
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    sqlconnection.Close();
+                    MostrarVehiculosEstacionados();
+                }
             }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.ToString());
-            }
-            return tablaEstacionados;
-
         }
+        
+
+        
 
         private void MostrarVehiculosEstacionados()
         {
             try
             {
                 //El query a realizar la base de datos
-                String query = "SELECT * FROM Parqueo.Vehiculo";
+                String query = @"SELECT * FROM Parqueo.Vehiculo,Parqueo.Tipo_Vehiculo WHERE Id = IdTipo_Vehiculo";
                 //SqlDataAdapter es una interfaz ejtr las tablas y los objetos
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlconnection);
 
@@ -192,12 +172,24 @@ namespace Proyecto_Parquimetro
                     sqlDataAdapter.Fill(tablaEstacionados);
 
                     //lbVehiculosAparacados.DisplayMemberPath = "Num_Placa";
-                    lbVehiculosAparacados.SelectedValuePath = "IdTipo_Vehiculo";                 
+                    lbVehiculosAparacados.SelectedValuePath = "Num_Placa";                 
                   
                     // Los tiene el DataTable
                     lbVehiculosAparacados.ItemsSource = tablaEstacionados.DefaultView;
 
-                    
+                    IList<Estacionados> Lista = new List<Estacionados>();
+                    foreach (DataRow row in tablaEstacionados.Rows )
+                    {
+                        Lista.Add(new Estacionados
+                        {
+                            NumPlaca= row[0].ToString(),
+                            Tipo_Vehiculo = row[4].ToString(),
+                            Hora_Ingreso = row[2].ToString()
+                        });
+                    }
+                    lbVehiculosAparacados.ItemsSource = Lista;
+
+
 
                 }
             }
@@ -207,7 +199,19 @@ namespace Proyecto_Parquimetro
                 MessageBox.Show(e.Message.ToString());
             }
 
-            
+
+        }
+
+        public void hora()
+        {
+           DispatcherTimer dispatcher = new DispatcherTimer();
+            dispatcher.Interval = new TimeSpan(0, 0, 1);
+            dispatcher.Tick += (s, a) =>
+            {
+                txthora.Text = DateTime.Now.ToString("hh:mm:ss");
+
+            };
+            dispatcher.Start();
         }
 
 
