@@ -88,8 +88,9 @@ namespace Proyecto_Parquimetro
 
                 
                 sqlCommand.Parameters.AddWithValue("@numero_placa", txtplaca.Text);
-                sqlCommand.Parameters.AddWithValue("@tipovehiculo", cmbtipovehiculo.SelectedValue);
+                sqlCommand.Parameters.AddWithValue("@tipovehiculo", Convert.ToString(cmbtipovehiculo.SelectedValue));
                 sqlCommand.ExecuteNonQuery();
+           
             }
             catch (Exception ex)
             {

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Proyecto_Parquimetro"
+        xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
         mc:Ignorable="d"
         Title="Window1" Height="612" Width="1070" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Background="#7c8500">
@@ -23,7 +24,7 @@
 
         <StackPanel Grid.Row="1" Grid.Column="0" Background="#e4e65e" HorizontalAlignment="Left" Width="415" Grid.ColumnSpan="2">
 
-            <TextBox Name="txtplaca" Background="White" Margin="76,40,54,0" materialDesign:HintAssist.Hint="Placa Vehiculo" FontSize="25" FontFamily="Roboto" materialDesign:HintAssist.IsFloating="True" Height="70" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            <TextBox  ToolTip="Formato HND1234" Name="txtplaca" Background="White" Margin="76,40,54,0" materialDesign:HintAssist.Hint="Placa Vehiculo" FontSize="25" FontFamily="Roboto" materialDesign:HintAssist.IsFloating="True" Height="70" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
             <ComboBox  Name="cmbtipovehiculo" Background="White" Margin="76,40,54,0" Height="70" materialDesign:HintAssist.Hint="Tipo Vehículo" FontFamily="Roboto" FontSize="25" VerticalAlignment="Bottom">
              
             </ComboBox>
@@ -32,7 +33,7 @@
 
         <StackPanel Margin="402,2,5,0" Grid.Row="1" Grid.Column="1" Background="#afb42b" Grid.ColumnSpan="3" />
         <Button  Background="#80cbc4" BorderBrush="#4f9a94" Height="Auto"  FontFamily="Roboto" FontSize="23"   Content="Salida" Margin="118,345,30,156" Name="btn_salida" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"/>
-        <ListBox Name="lbVehiculosAparacados" Grid.Row="1" Margin="424,2,30,230" Background="White" Grid.ColumnSpan="3" Grid.Column="1"/>
+        <ListBox Name="lbVehiculosAparacados" Grid.Row="1" Margin="424,2,30,230" Background="White" Grid.ColumnSpan="3" Grid.Column="1" />
         <Label  FontFamily="Roboto" FontSize="30" FontWeight="Bold" Margin="444,408,335,79" Grid.Row="1" Content="Cobro" Grid.ColumnSpan="2" Grid.Column="1" />
         <ListBox Name="lbcobro" Grid.Row="1" Margin="442,454,30,12" Background="White" Grid.ColumnSpan="3" Grid.Column="1"/>
         <Button Background="#80cbc4" BorderBrush="#4f9a94" Name="Btnrefresh" Content="{materialDesign:PackIcon Kind=Refresh,Size=40}" ToolTip="Refrescar Vehículos" Grid.ColumnSpan="2" Margin="424,345,243,156" Grid.Row="1" Height="Auto" Grid.Column="1" />
