@@ -1,0 +1,45 @@
+﻿<Window x:Class="Proyecto_Parquimetro.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Proyecto_Parquimetro"
+        mc:Ignorable="d"
+        Title="Parquimetro" Height="450" Width="600" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Background="#7c8500">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="221*"/>
+            <ColumnDefinition Width="61*"/>
+        </Grid.ColumnDefinitions>
+
+
+
+        <Grid.RowDefinitions >
+            <RowDefinition Height="50"  />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--<materialDesign:PackIcon Kind="Shutdown" materialDesign:ColorZoneAssist.Mode="Light" HorizontalAlignment="Right" Height="50" Width="94" Grid.Column="2"/>-->
+        <Label Foreground="White" FontStyle="Italic" FontFamily="Rbik" HorizontalAlignment="Center" Grid.Row="0" FontSize="30" FontWeight="Bold"  Width="240" Margin="10,0,222,0" Grid.ColumnSpan="2"  >Parquimetro</Label>
+        <StackPanel Grid.Row="1" Grid.Column="0" Background="#e4e65e" HorizontalAlignment="Left" Width="150" Grid.ColumnSpan="2" >
+            <materialDesign:PackIcon Kind="Hackernews" materialDesign:ColorZoneAssist.Mode="Light" HorizontalAlignment="Left" Height="153" Width="154"  Margin="0,200,0,-1" VerticalAlignment="Bottom"  />
+        </StackPanel>
+
+        <StackPanel Margin="125,0,0,0" Grid.Row="1" Grid.Column="1" Background="#afb42b" HorizontalAlignment="Center" Grid.ColumnSpan="2" Width="439"  >
+            <Button  Background="#80cbc4" BorderBrush="#4f9a94" Height="50" Width="318" FontFamily="Robotol" FontSize="23"   Content="Vehiculo" Margin="89,20,0,20" x:Name="btn_Vehiculo" Click="Btn_vehiculo_Click" HorizontalAlignment="Left"/>
+            <Button  Background="#80cbc4" BorderBrush="#4f9a94" Height="50" Width="318" FontFamily="Roboto" FontSize="23"  Content="Reporte" Margin="92,20,0,20" Name="btn_reporte" HorizontalAlignment="Left" />
+            <Button  Background="#80cbc4" BorderBrush="#4f9a94" Height="50" Width="318" FontFamily="Roboto" FontSize="23"   Content="Manual" Margin="92,20,0,20" Name="btn_manual" HorizontalAlignment="Left"/>
+            <Button  Background="#80cbc4" BorderBrush="#4f9a94" Height="50"  Width="318" FontFamily="Roboto" FontSize="23"   Content="Extra" Margin="92,20,0,20" HorizontalAlignment="Left"  />
+
+        </StackPanel>
+        <materialDesign:PackIcon Kind="CarDoor" Height="63" Width="41" HorizontalAlignment="Left" Margin="156,12,0,0" Grid.Row="1" Grid.Column="1" />
+        <materialDesign:PackIcon Kind="ClipboardArrowDown" Height="62" Width="41" HorizontalAlignment="Left" Margin="156,104,0,0" Grid.Row="1" Grid.Column="1"/>
+        <materialDesign:PackIcon Kind="LeadPencil" Height="62" Width="41" HorizontalAlignment="Left" Margin="156,194,0,0" Grid.Row="1" Grid.Column="1"/>
+        <materialDesign:PackIcon Kind="Incognito" Height="62" Width="41" HorizontalAlignment="Left" Margin="156,284,0,0" Grid.Row="1" Grid.Column="1"/>
+        <Button Name="btnapagar" Style="{DynamicResource MaterialDesignToolButton }" Content="{materialDesign:PackIcon Kind=Shutdown, Size= 55 }" Margin="0,-5,10,389" Height="Auto" Width="58" HorizontalAlignment="Right" Grid.Column="2" Grid.RowSpan="2" Foreground="Black" Background="#fbc02d" Click="Btnapagar_Click"/>
+    </Grid>
+
+</Window>
