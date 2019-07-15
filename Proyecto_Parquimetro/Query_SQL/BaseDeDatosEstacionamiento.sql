@@ -2,6 +2,7 @@
 -- ELABORADA POR: WILL ALEJANDRO LARA
 --				  RUDY ROBERTO ROSA
 -- CLASE: PROGRAMACION DE NEGOCIOS
+-- CATEDRATICO: Hector Heliel Sabillon
 
 USE tempdb
 GO
@@ -104,3 +105,8 @@ SELECT * FROM Parqueo.Cobro
 GO
 
 DROP table Parqueo.Registro*/
+
+/*CREATE PROC BOTONSALIDA @placa VARCHAR(10), @idtipo INT
+AS
+BEGIN*/
+	
