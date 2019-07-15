@@ -1,4 +1,11 @@
-﻿using System;
+﻿/* Programa Elaborado por: Rudy Roberto Rosa
+                           Will Alejandro Lara
+   Clase: Programación de negocios
+   Catedratico: Hector Heliel Sabillon
+   Fecha de entrega: 15/07/2019
+ */ 
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
