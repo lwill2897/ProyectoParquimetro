@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
@@ -32,6 +33,34 @@ namespace Proyecto_Parquimetro
             string connectionString = ConfigurationManager.ConnectionStrings["Proyecto_Parquimetro.Properties.Settings.EstacionamientoConnectionString"].ConnectionString;
             sqlconnection = new SqlConnection(connectionString);
             MostrarTipo();
+            MostrarVehiculosEstacionados();
+    
+
+        }
+        public class Estacionados
+        {
+            private string numPlaca;
+            private int idTipoVehiculo;
+ 
+
+   
+            public Estacionados()
+            {
+
+            }
+            public int IdTipoVehiculo
+            {
+                get { return idTipoVehiculo; }
+                set { idTipoVehiculo = value; }
+            }
+
+            public string NumPlaca
+            {
+                get { return numPlaca; }
+                set { numPlaca = value; }
+            }
+
+
         }
 
         private void TextFieldAssist_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
@@ -48,7 +77,7 @@ namespace Proyecto_Parquimetro
         }
 
 
-        private void MostrarTipo()
+        public void MostrarTipo()
         {
             try
             {
@@ -101,5 +130,87 @@ namespace Proyecto_Parquimetro
                 sqlconnection.Close();
             }
         }
+                
+        private void Btn_salida_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbVehiculosAparacados.SelectedValue == null)
+                MessageBox.Show("Debe seleccionar un Vehiculo");
+            else
+            {
+
+            }
+
+        }
+
+        public DataTable MostrarEstacionados()
+        {
+            DataTable tablaEstacionados = new DataTable();
+            try
+            {
+
+                string query = "SELECT * from Parqueo.Vehiculo";
+
+                // Comando SQL
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlconnection);
+
+                using (sqlDataAdapter)
+                {
+
+                    sqlDataAdapter.Fill(tablaEstacionados);
+                    lbVehiculosAparacados.DisplayMemberPath = "Num_Placa";
+
+                    lbVehiculosAparacados.SelectedValuePath = " Num_Placa";
+                    lbVehiculosAparacados.ItemsSource = tablaEstacionados.DefaultView;
+                }
+
+
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            return tablaEstacionados;
+
+        }
+
+        private void MostrarVehiculosEstacionados()
+        {
+            try
+            {
+                //El query a realizar la base de datos
+                String query = "SELECT * FROM Parqueo.Vehiculo";
+                //SqlDataAdapter es una interfaz ejtr las tablas y los objetos
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlconnection);
+
+                using (sqlDataAdapter)
+                {
+                    //Objeto en c# que refleja una tabla de una base de datos
+                    DataTable tablaEstacionados = new DataTable();
+
+                    //Llenar el objeto de tipo DataTable
+                    sqlDataAdapter.Fill(tablaEstacionados);
+
+                    //lbVehiculosAparacados.DisplayMemberPath = "Num_Placa";
+                    lbVehiculosAparacados.SelectedValuePath = "IdTipo_Vehiculo";                 
+                  
+                    // Los tiene el DataTable
+                    lbVehiculosAparacados.ItemsSource = tablaEstacionados.DefaultView;
+
+                    
+
+                }
+            }
+            catch (Exception e)
+            {
+                // Este indicaria el error que ha ocurrido
+                MessageBox.Show(e.Message.ToString());
+            }
+
+            
+        }
+
+
     }
 }
+

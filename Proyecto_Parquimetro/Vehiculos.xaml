@@ -32,8 +32,23 @@
         </StackPanel>
 
         <StackPanel Margin="402,2,5,0" Grid.Row="1" Grid.Column="1" Background="#afb42b" Grid.ColumnSpan="3" />
-        <Button  Background="#80cbc4" BorderBrush="#4f9a94" Height="Auto"  FontFamily="Roboto" FontSize="23"   Content="Salida" Margin="118,345,30,156" Name="btn_salida" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"/>
-        <ListBox Name="lbVehiculosAparacados" Grid.Row="1" Margin="424,2,30,230" Background="White" Grid.ColumnSpan="3" Grid.Column="1" />
+        <Button  Background="#80cbc4" BorderBrush="#4f9a94" Height="Auto"  FontFamily="Roboto" FontSize="23"   Content="Salida" Margin="118,345,30,156" Name="btn_salida" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Click="Btn_salida_Click"/>
+        <ListBox Name="lbVehiculosAparacados" Grid.Row="1" Margin="424,2,30,230" Background="White" Grid.ColumnSpan="3" Grid.Column="1" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="hola" ></TextBlock>
+                        <TextBlock Grid.Column="1" Text="23"></TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
         <Label  FontFamily="Roboto" FontSize="30" FontWeight="Bold" Margin="444,408,335,79" Grid.Row="1" Content="Cobro" Grid.ColumnSpan="2" Grid.Column="1" />
         <ListBox Name="lbcobro" Grid.Row="1" Margin="442,454,30,12" Background="White" Grid.ColumnSpan="3" Grid.Column="1"/>
         <Button Background="#80cbc4" BorderBrush="#4f9a94" Name="Btnrefresh" Content="{materialDesign:PackIcon Kind=Refresh,Size=40}" ToolTip="Refrescar Vehículos" Grid.ColumnSpan="2" Margin="424,345,243,156" Grid.Row="1" Height="Auto" Grid.Column="1" />
