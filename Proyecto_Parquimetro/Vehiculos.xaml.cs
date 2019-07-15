@@ -149,6 +149,8 @@ namespace Proyecto_Parquimetro
                     sqlconnection.Close();
                     MostrarVehiculosEstacionados();
                 }
+
+
             }
         }
         
@@ -183,7 +185,8 @@ namespace Proyecto_Parquimetro
                     {
                         Lista.Add(new Estacionados
                         {
-                            NumPlaca= row[0].ToString(),
+                        
+                            NumPlaca = row[0].ToString(),
                             Tipo_Vehiculo = row[4].ToString(),
                             Hora_Ingreso = row[2].ToString()
                         });
